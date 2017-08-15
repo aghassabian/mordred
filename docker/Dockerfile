@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEPLOY_USER bitergia
 ENV DEPLOY_USER_DIR /home/${DEPLOY_USER}
 ENV SCRIPTS_DIR ${DEPLOY_USER_DIR}/scripts
+ENV GERRIT_SRV review.inocybe.com
 
 # Initial user
 RUN useradd bitergia --create-home --shell /bin/bash
@@ -67,6 +68,10 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
 ADD cacert.pem ${DEPLOY_USER_DIR}/cacert.pem
 RUN CERT_PATH=`python3 -m requests.certs` && \
     cat ${DEPLOY_USER_DIR}/cacert.pem >> ${CERT_PATH}
+
+RUN ssh-keygen -q -t rsa -N '' -f ${DEPLOY_USER_DIR}/.ssh/id_rsa
+ADD ${DEPLOY_USER_DIR}/.ssh/known_hosts
+RUN ssh-keyscan -t rsa ${GERRIT_SRV} >> ${DEPLOY_USER_DIR}/.ssh/known_hosts
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
