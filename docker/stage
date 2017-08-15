@@ -43,7 +43,7 @@ git clone https://github.com/grimoirelab/sortinghat.git && \
 
 # get GrimoireELK repository
 cd /home/bitergia && \
-git clone https://github.com/grimoirelab/GrimoireELK && \
+git clone https://github.com/aghassabian/GrimoireELK && \
     cd GrimoireELK && \
     git checkout $GRIMOIREELK
 
@@ -55,7 +55,7 @@ git clone https://github.com/VizGrimoire/VizGrimoireUtils && \
 
 # get Mordred repository
 cd /home/bitergia && \
-git clone https://github.com/Bitergia/mordred.git mordred && \
+git clone https://github.com/aghassabian/mordred.git mordred && \
     cd mordred && \
     git checkout $MORDRED
 
