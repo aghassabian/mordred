@@ -3,7 +3,6 @@
 
 FROM debian:8
 MAINTAINER Luis Cañas-Díaz <lcanas@bitergia.com>
-MAINTAINER Ali GHassabian <aghassabian@inocybe.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEPLOY_USER bitergia
