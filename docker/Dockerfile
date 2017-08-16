@@ -69,7 +69,7 @@ ADD cacert.pem ${DEPLOY_USER_DIR}/cacert.pem
 RUN CERT_PATH=`python3 -m requests.certs` && \
     cat ${DEPLOY_USER_DIR}/cacert.pem >> ${CERT_PATH}
 
-RUN ssh-keygen -q -t rsa -N '' -f ${DEPLOY_USER_DIR}/.ssh/id_rsa
+RUN /usr/bin/ssh-keygen -q -t rsa -N '' -f ${DEPLOY_USER_DIR}/.ssh/id_rsa
 ADD ${DEPLOY_USER_DIR}/.ssh/known_hosts
 RUN ssh-keyscan -t rsa ${GERRIT_SRV} >> ${DEPLOY_USER_DIR}/.ssh/known_hosts
 
